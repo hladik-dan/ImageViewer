@@ -117,7 +117,18 @@ void ImageView::fitToDesktop() {
   QRect availableGeometry = QApplication::desktop()->availableGeometry();
   int frameSize = gMainWindow->frameGeometry().height()
       - gMainWindow->geometry().height();
+
   availableGeometry.setHeight(availableGeometry.height() - frameSize);
+
+  if (gMenuBar->isVisible()) {
+    availableGeometry.setHeight(availableGeometry.height() - gMenuBar->height());
+  }
+  if (gToolBar->isVisible()) {
+    availableGeometry.setHeight(availableGeometry.height() - gToolBar->height());
+  }
+  if (gStatusBar->isVisible()) {
+    availableGeometry.setHeight(availableGeometry.height() - gStatusBar->height());
+  }
 
   if (mImage.width() > availableGeometry.width()) {
     mScale = (qreal) availableGeometry.width() / (qreal) mImage.width();
@@ -138,7 +149,20 @@ void ImageView::fitToImage() {
     gMainWindow->showNormal();
   }
 
-  gMainWindow->resize(mImage.size() * mScale);
+  int w = qRound(mImage.width() * mScale);
+  int h = qRound(mImage.height() * mScale);
+
+  if (gMenuBar->isVisible()) {
+    h += gMenuBar->height();
+  }
+  if (gToolBar->isVisible()) {
+    h += gToolBar->height();
+  }
+  if (gStatusBar->isVisible()) {
+    h += gStatusBar->height();
+  }
+
+  gMainWindow->resize(w, h);
 }
 
 void ImageView::fitToWindow() {
@@ -171,6 +195,7 @@ void ImageView::openImage(QString fileName) {
   mPixmapItem->setPixmap(mPixmap);
   mScene->setSceneRect(QRect(QPoint(0, 0), mImage.size()));
 
+  originalSize();
   autoZoom();
   resize();
 

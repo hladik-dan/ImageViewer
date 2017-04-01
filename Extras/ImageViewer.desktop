@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Image Viewer
+Icon=/opt/ImageViewer/icon.svg
+Terminal=false
+Exec=/opt/ImageViewer/RunImageViewer.sh %f
+MimeType=image/bmp;image/jpeg;image/jpg;image/png;
+

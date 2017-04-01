@@ -5,6 +5,7 @@
 #include <QGraphicsPixmapItem>
 #include <QLayout>
 #include <QMouseEvent>
+#include <QtMath>
 
 #include "File.h"
 #include "MainWindow.h"
@@ -228,6 +229,7 @@ void ImageView::zoomIn() {
   qreal zoomStep = gSettings->zoomStep() / 100.0;
   if (mScale + zoomStep <= ZOOM_MAX) {
     mScale += zoomStep;
+    mScale = qFloor(mScale / zoomStep) * zoomStep;
   }
 
   QTransform transformation = transform().fromScale(mScale, mScale);
@@ -242,6 +244,7 @@ void ImageView::zoomOut() {
   qreal zoomStep = gSettings->zoomStep() / 100.0;
   if (mScale - zoomStep >= ZOOM_MIN) {
     mScale -= zoomStep;
+    mScale = qCeil(mScale / zoomStep) * zoomStep;
   }
 
   QTransform transformation = transform().fromScale(mScale, mScale);

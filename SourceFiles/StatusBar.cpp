@@ -59,7 +59,7 @@ void StatusBar::update() {
         + "x"
         + QString::number(gImageView->image().height());
     fileInfo += "    ";
-    fileInfo += QString::number(gImageView->scale() * 100) + "%";
+    fileInfo += QString::number(qRound(gImageView->scale() * 100)) + "%";
 
     filePosition += "[";
     filePosition += QString::number(gFile->index() + 1);

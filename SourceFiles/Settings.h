@@ -28,6 +28,7 @@ public:
 
   bool enableAutoZoom();
   bool enableZoomOnResize();
+  bool showFileNameInTitleBar();
   bool showMenuBar();
   bool showStatusBar();
   bool showToolBar();
@@ -82,6 +83,7 @@ public:
 
   void setEnableAutoZoom(bool value);
   void setEnableZoomOnResize(bool value);
+  void setShowFileNameInTitleBar(bool value);
   void setShowMenuBar(bool value);
   void setShowStatusBar(bool value);
   void setShowToolBar(bool value);
@@ -130,6 +132,7 @@ public:
 private:
   bool mEnableAutoZoom;
   bool mEnableZoomOnResize;
+  bool mShowFileNameInTitleBar;
   bool mShowMenuBar;
   bool mShowStatusBar;
   bool mShowToolBar;

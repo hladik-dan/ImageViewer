@@ -192,6 +192,11 @@ void ImageView::openImage(QString fileName) {
 
   gFile->setCurrentFile(fileName);
 
+  if (gSettings->showFileNameInTitleBar()) {
+    gMainWindow->setWindowTitle(gFile->currentFile().fileName()
+                                    + " - ImageViewer");
+  }
+
   mPixmapItem->setPixmap(mPixmap);
   mScene->setSceneRect(QRect(QPoint(0, 0), mImage.size()));
 

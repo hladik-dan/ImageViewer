@@ -1,6 +1,7 @@
 #include "WindowTab.h"
 
 #include <QBoxLayout>
+#include <QCheckBox>
 #include <QGroupBox>
 #include <QRadioButton>
 
@@ -20,10 +21,12 @@ void WindowTab::reload() {
   mFitToImage->setChecked(gSettings->resize() == Settings::Resize::FitToImage);
   mFitToBigImage->setChecked(
       gSettings->resize() == Settings::Resize::FitToBigImage);
+  mShowFileNameInTitleBar->setChecked(gSettings->showFileNameInTitleBar());
 }
 
 void WindowTab::setup() {
   addLayout();
+  addShowFileNameInTitleBarSetting();
   addResizeSetting();
 }
 
@@ -74,6 +77,19 @@ void WindowTab::addResizeSetting() {
   mLayout->addWidget(mResizeGroup);
 }
 
+void WindowTab::addShowFileNameInTitleBarSetting() {
+  mShowFileNameInTitleBar = new QCheckBox();
+  mShowFileNameInTitleBar->setText("Show Filename in Title Bar");
+  mShowFileNameInTitleBar->setChecked(gSettings->showFileNameInTitleBar());
+
+  connect(mShowFileNameInTitleBar,
+          &QCheckBox::stateChanged,
+          this,
+          &WindowTab::showFileNameInTitleBar);
+
+  mLayout->addWidget(mShowFileNameInTitleBar);
+}
+
 void WindowTab::keepSize() {
   gSettings->setResize(Settings::Resize::KeepSize);
 }
@@ -84,4 +100,12 @@ void WindowTab::fitToImage() {
 
 void WindowTab::fitToBigImage() {
   gSettings->setResize(Settings::Resize::FitToBigImage);
+}
+
+void WindowTab::showFileNameInTitleBar(int state) {
+  if (state == Qt::Unchecked) {
+    gSettings->setShowFileNameInTitleBar(false);
+  } else if (state == Qt::Checked) {
+    gSettings->setShowFileNameInTitleBar(true);
+  }
 }

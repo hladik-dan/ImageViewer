@@ -10,6 +10,7 @@ Settings::~Settings() {
 void Settings::load() {
   mEnableAutoZoom = value("enableAutoZoom", true).toBool();
   mEnableZoomOnResize = value("enableZoomOnResize", true).toBool();
+  mShowFileNameInTitleBar = value("showFileNameInTitleBar", true).toBool();
   mShowMenuBar = value("showMenuBar", true).toBool();
   mShowStatusBar = value("showStatusBar", true).toBool();
   mShowToolBar = value("showToolBar", true).toBool();
@@ -88,6 +89,7 @@ void Settings::reload() {
 void Settings::save() {
   setValue("enableAutoZoom", mEnableAutoZoom);
   setValue("enableZoomOnResize", mEnableZoomOnResize);
+  setValue("showFileNameInTitleBar", mShowFileNameInTitleBar);
   setValue("showMenuBar", mShowMenuBar);
   setValue("showStatusBar", mShowStatusBar);
   setValue("showToolBar", mShowToolBar);
@@ -140,6 +142,10 @@ bool Settings::enableAutoZoom() {
 
 bool Settings::enableZoomOnResize() {
   return mEnableZoomOnResize;
+}
+
+bool Settings::showFileNameInTitleBar() {
+  return mShowFileNameInTitleBar;
 }
 
 bool Settings::showMenuBar() {
@@ -332,6 +338,10 @@ void Settings::setEnableAutoZoom(bool value) {
 
 void Settings::setEnableZoomOnResize(bool value) {
   mEnableZoomOnResize = value;
+}
+
+void Settings::setShowFileNameInTitleBar(bool value) {
+  mShowFileNameInTitleBar = value;
 }
 
 void Settings::setShowMenuBar(bool value) {

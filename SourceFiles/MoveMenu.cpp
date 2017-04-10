@@ -108,7 +108,7 @@ void MoveMenu::moveToFolder1() {
 }
 
 void MoveMenu::moveToFolder2() {
-  if (!gSettings->folderPath2().isEmpty()) {
+  if (gSettings->folderPath2().isEmpty()) {
     return;
   }
 
@@ -120,7 +120,7 @@ void MoveMenu::moveToFolder2() {
 }
 
 void MoveMenu::moveToFolder3() {
-  if (!gSettings->folderPath3().isEmpty()) {
+  if (gSettings->folderPath3().isEmpty()) {
     return;
   }
 
@@ -132,7 +132,7 @@ void MoveMenu::moveToFolder3() {
 }
 
 void MoveMenu::moveToFolder4() {
-  if (!gSettings->folderPath4().isEmpty()) {
+  if (gSettings->folderPath4().isEmpty()) {
     return;
   }
 
@@ -144,7 +144,7 @@ void MoveMenu::moveToFolder4() {
 }
 
 void MoveMenu::moveToFolder5() {
-  if (!gSettings->folderPath5().isEmpty()) {
+  if (gSettings->folderPath5().isEmpty()) {
     return;
   }
 

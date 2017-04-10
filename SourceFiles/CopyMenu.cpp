@@ -106,7 +106,7 @@ void CopyMenu::copyToFolder1() {
 }
 
 void CopyMenu::copyToFolder2() {
-  if (!gSettings->folderPath2().isEmpty()) {
+  if (gSettings->folderPath2().isEmpty()) {
     return;
   }
 
@@ -116,7 +116,7 @@ void CopyMenu::copyToFolder2() {
 }
 
 void CopyMenu::copyToFolder3() {
-  if (!gSettings->folderPath3().isEmpty()) {
+  if (gSettings->folderPath3().isEmpty()) {
     return;
   }
 
@@ -126,7 +126,7 @@ void CopyMenu::copyToFolder3() {
 }
 
 void CopyMenu::copyToFolder4() {
-  if (!gSettings->folderPath4().isEmpty()) {
+  if (gSettings->folderPath4().isEmpty()) {
     return;
   }
 
@@ -136,7 +136,7 @@ void CopyMenu::copyToFolder4() {
 }
 
 void CopyMenu::copyToFolder5() {
-  if (!gSettings->folderPath5().isEmpty()) {
+  if (gSettings->folderPath5().isEmpty()) {
     return;
   }
 

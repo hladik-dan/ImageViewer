@@ -108,17 +108,24 @@ void FileMenu::quit() {
 }
 
 void FileMenu::saveAs() {
-  QString fileName = QFileDialog::getSaveFileName(
-      gMainWindow,
-      "Save Image",
-      QString(),
-      "BMP Image (*.bmp);;"
-      "JPEG Image (*.jpg);;"
-      "PNG Image (*.png)"
-  );
+  QString filters = "BMP Image (*.bmp);;JPEG Image (*.jpg);;PNG Image (*.png)";
+  QString selectedFilter = "PNG Image (*.png)";
+  QString fileName = QFileDialog::getSaveFileName(gMainWindow,
+                                                  "Save Image",
+                                                  QString(),
+                                                  filters,
+                                                  &selectedFilter);
 
   if (fileName.isNull()) {
     return;
+  }
+
+  if (selectedFilter == "BMP Image (*.bmp)") {
+    fileName += ".bmp";
+  } else if (selectedFilter == "JPEG Image (*.jpg)") {
+    fileName += ".jpg";
+  } else if (selectedFilter == "PNG Image (*.png)") {
+    fileName += ".png";
   }
 
   gImageView->saveImage(fileName);

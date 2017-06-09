@@ -42,6 +42,10 @@ void ImageView::closeImage() {
 
   gFile->setCurrentFile(QString());
 
+  if (gSettings->showFileNameInTitleBar()) {
+    gMainWindow->setWindowTitle("ImageViewer");
+  }
+
   emit updated();
 }
 
